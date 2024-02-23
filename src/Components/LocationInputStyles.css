@@ -1,0 +1,10 @@
+.suggestions {
+    list-style: none;
+    margin: 2rem;
+    padding: 0;
+    border: 1px solid #ccc;
+    max-height: 200px;
+    max-width: 500px;
+    overflow-y: auto;
+    cursor: pointer;
+}
