@@ -117,6 +117,7 @@ const Register = () => {
         <button type="submit" name="register">Register</button>
         </form>
         <Link to="/login" className= "link-btn" type="submit" > Don't have an account? Login here. </Link>
+        <Link to="/admin/login" className= "link-btn" type="submit"> Access Control </Link>
         </div>
         </div>
         </>

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
-import "../Components/SignUpStyles.css";
-import Navbar from "../Components/Navbar";
+import "../Components/AccessControlStyles.css";
+import Navbar from "./Navbar";
 
 
 
-const Login = () => {
+const AccessControl = () => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
     const navigate = useNavigate();
@@ -16,7 +16,7 @@ const Login = () => {
         e.preventDefault();
 
         try{
-            const response = await axios.post('http://localhost:5000/login',
+            const response = await axios.post('http://localhost:5000/admin/login',
             {
                 email,
                 password: pass
@@ -26,7 +26,7 @@ const Login = () => {
                 // Login successful
                 alert('Login successful');
                 // Redirect to the desired page
-                navigate('/mechview');
+                navigate('/admin/tasklist');
             } else {
                 // Login failed
                 alert(response.data.message);
@@ -39,10 +39,10 @@ const Login = () => {
     return (
         <>
        <Navbar/>
-       
-       <div className="login">
+       <div className="loginB">
        <div className="auth-form-container">
-            <h2>Mechanic Login</h2>
+            <h2>Admin Login</h2>
+            <br/>
          <form className= "login-form" onSubmit={ handleSubmit }>
             <label htmlFor="email">email</label>
             <input value={ email } onChange= {(e) => setEmail(e.target.value)} type="email" placeholder="youremail@gmail.com" id="email" name="email" />
@@ -51,8 +51,8 @@ const Login = () => {
             <button className="login-button" type="submit">Log in</button>
 
         </form>
-        <Link to="/register" className= "link-btn" type="submit"> Don't have an account? Register here. </Link>
-        <Link to="/admin/login" className= "link-btn" type="submit"> Access Control </Link>
+        <Link to="/admin/register" className= "link-btn" type="submit"> Already have an account? <b>Admin Registration.</b> </Link>
+        <Link to="/login" className= "link-btn" type="submit"> <b>User Login</b> </Link>
         </div>
        </div>
 
@@ -62,4 +62,4 @@ const Login = () => {
 
 };
 
-export default Login;
+export default AccessControl;

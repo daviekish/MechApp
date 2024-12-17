@@ -63,8 +63,28 @@ useEffect(() => {
         console.log("Data:", row);
         setSelectedData(row);
         setTimer(2400);
+const ws = new WebSocket('ws://localhost:8080');
+
+ws.onopen = () => {
+    const sendLocationUpdates = () => {
+        // Get the mechanic's current location (this should be replaced with real data)
+        const latitude = 40.7128; // Example latitude
+        const longitude = -74.0060; // Example longitude
+
+        ws.send(JSON.stringify({
+            type: 'locationUpdate',
+            mechanicId: row.id,
+            latitude: latitude,
+            longitude: longitude
+        }));
+    };
+
+    // Send location updates every 5 seconds (or any interval you choose)
+    setInterval(sendLocationUpdates, 5000);
+
         handleRequestAccept(true);
     }
+}
 
     const handleDecline = (id) => {
         console.log(`Declined record with id: ${id}`)

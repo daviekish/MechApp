@@ -10,6 +10,9 @@ import Register from './routes/Register';
 import MechStatus from './Components/MechStatus';
 import MechView from './Components/MechView';
 import DriverStatus from './Components/DriverStatus';
+import AccessControl from './Components/AccessControl';
+import AdminRegister from './Components/AdminRegister';
+import AdminTaskList from './Components/AdminTaskList';
 
 function App() {
 
@@ -25,6 +28,9 @@ function App() {
   <Route path="/mech-status" element= { <MechStatus />}/>
   <Route path="/mechview" element= { <MechView />}/>
   <Route path="/driverstatus" element= { <DriverStatus/>}/>
+  <Route path="/admin/login" element={<AccessControl/>}/>
+  <Route path="/admin/register" element={<AdminRegister/>}/>
+  <Route path= "/admin/tasklist" element={<AdminTaskList/>}/>
 </Routes>
 
     </div>
